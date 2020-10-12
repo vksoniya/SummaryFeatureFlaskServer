@@ -15,7 +15,7 @@ def index():
         participantList = currentMeetingInfo['userNames']
         for p in participantList:
             name = str(p) + ", "
-            pStr.append(name)
+            pStr = pStr + name
         participant_1 = pStr
         participant_2 = "Vindhya"
         final_summary = "Some random stuff that we talk about"
