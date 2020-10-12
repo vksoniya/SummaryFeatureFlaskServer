@@ -1,4 +1,4 @@
-from redisChannelAccess import subscribeToRedisChannel
+from utils.redisChannelAccess import subscribeToRedisChannel
 import json
 
 #To Do:
