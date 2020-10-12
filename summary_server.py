@@ -7,13 +7,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-        
+        pStr = ""
         #Step 1: Get the Current Meeting Information
         currentMeetingInfo = getcurrentMeetingInfo()
         conf_id = currentMeetingInfo['voiceConfID']
         meeting_start_time = currentMeetingInfo['recordTimeStamp']
         participantList = currentMeetingInfo['userNames']
-        participant_1 = participantList
+        for p in participantList:
+            name = str(p) + ", "
+            pStr.append(name)
+        participant_1 = pStr
         participant_2 = "Vindhya"
         final_summary = "Some random stuff that we talk about"
         return render_template('index.html',conf_id=conf_id,meeting_start_time=meeting_start_time,participant_1=participant_1,participant_2=participant_2,final_summary=final_summary)
