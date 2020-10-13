@@ -29,6 +29,8 @@ def index():
         FINAL_SUMMARY = final_summary
         return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
 
+#Pending Reload summary on button click
+# Alternate use stream, as last option
 @app.route('/',methods=['GET','POST'])
 def refresh():
     final_summary = ""
