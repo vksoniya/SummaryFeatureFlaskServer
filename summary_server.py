@@ -14,16 +14,14 @@ def index():
         meeting_start_time = currentMeetingInfo['recordTimeStamp']
         participantList = currentMeetingInfo['userNames']
         for p in participantList:
-            name = str(p) + ", "
-            pStr = pStr + name
-        participant_1 = pStr
-        participant_2 = "Vindhya"
+            pStr = pStr + str(p) + ", "
+        participant_list = pStr
         #Step 2: Load <confid>_summary.txt content
-        currentSummaryFile = "MeetingSummaryData/88503_summary.txt"
+        #currentSummaryFile = "MeetingSummaryData/" + conf_id + "_summary.txt" # Actual file
+        currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
         fSummary = open(currentSummaryFile, "r")
         final_summary = fSummary.read()
-        #final_summary = "Some random stuff that we talk about"
-        return render_template('index.html',conf_id=conf_id,meeting_start_time=meeting_start_time,participant_1=participant_1,participant_2=participant_2,final_summary=final_summary)
+        return render_template('index.html',conf_id=conf_id,meeting_start_time=meeting_start_time,participant_list=participant_list,final_summary=final_summary)
 
 if __name__ == '__main__':
     app.run(host='localhost', port=7030, debug=True)
