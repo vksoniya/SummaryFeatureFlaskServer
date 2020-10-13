@@ -18,7 +18,11 @@ def index():
             pStr = pStr + name
         participant_1 = pStr
         participant_2 = "Vindhya"
-        final_summary = "Some random stuff that we talk about"
+        #Step 2: Load <confid>_summary.txt content
+        currentSummaryFile = "MeetingSummaryData/88503_summary.txt"
+        fSummary = open(currentSummaryFile, "r")
+        final_summary = fSummary.read()
+        #final_summary = "Some random stuff that we talk about"
         return render_template('index.html',conf_id=conf_id,meeting_start_time=meeting_start_time,participant_1=participant_1,participant_2=participant_2,final_summary=final_summary)
 
 if __name__ == '__main__':
