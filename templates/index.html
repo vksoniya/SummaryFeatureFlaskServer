@@ -110,8 +110,17 @@
         $("#btn_refresh").on("click",function(e) {
             e.preventDefault();
             $("#target_div").hide();
-            var ptag = document.getElementById('txt_summary');
-            ptag.innerHTML = 'Observe the Change';
+
+            const file = "eg.txt";
+            var fileReader = new FileReader(); 
+            fileReader.onload = function (e) { 
+                var ptag = document.getElementById('txt_summary');
+                ptag.innerHTML = fileReader.result;
+            }
+            fileReader.readAsText(this.files[0]);
+
+            /* var ptag = document.getElementById('txt_summary');
+            ptag.innerHTML = 'Observe the Change'; */
     });
 });
   </script>
