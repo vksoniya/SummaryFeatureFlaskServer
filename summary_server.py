@@ -31,6 +31,11 @@ def loadMeetingInformation():
 @app.route('/' ,methods=['GET','POST'])
 def index():
 
+    CONF_ID = ""
+    MEETING_START_TIME = ""
+    PARTICIPANT_LIST = ""
+    FINAL_SUMMARY = ""
+
     if request.method == 'POST':
         #Step 2: Load <confid>_summary.txt content
         #currentSummaryFile = "MeetingSummaryData/" + conf_id + "_summary.txt" # Actual file
@@ -38,7 +43,7 @@ def index():
         FINAL_SUMMARY = final_summary
         return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
     else:
-        CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation():
+        CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation()
         return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
 
 
