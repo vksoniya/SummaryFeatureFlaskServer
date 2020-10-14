@@ -28,7 +28,7 @@ def loadMeetingInformation():
     return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
 
 
-@app.route('/' ,methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def index():
 
     CONF_ID = ""
@@ -47,6 +47,12 @@ def index():
         return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
 
 
+@app.route('/refresh', methods=['GET','POST'])
+def refresh():
+    if request.method == 'GET':
+        final_summary = "underconstruction"
+        FINAL_SUMMARY = final_summary
+        return FINAL_SUMMARY
 
 
 
