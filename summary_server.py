@@ -10,19 +10,23 @@ MEETING_START_TIME = ""
 PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
 
-pStr = ""
-#Step 1: Get the Current Meeting Information
-currentMeetingInfo = getcurrentMeetingInfo()
-CONF_ID = currentMeetingInfo['voiceConfID']
-MEETING_START_TIME = currentMeetingInfo['recordTimeStamp']
-participantList = currentMeetingInfo['userNames']
-for p in participantList:
-    pStr = pStr + str(p) + ", "
-PARTICIPANT_LIST = pStr
-currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
-fSummary = open(currentSummaryFile, "r")
-final_summary = fSummary.read()
-FINAL_SUMMARY = final_summary
+def loadMeetingInformation():
+    pStr = ""
+    #Step 1: Get the Current Meeting Information
+    currentMeetingInfo = getcurrentMeetingInfo()
+    CONF_ID = currentMeetingInfo['voiceConfID']
+    MEETING_START_TIME = currentMeetingInfo['recordTimeStamp']
+    participantList = currentMeetingInfo['userNames']
+    for p in participantList:
+        pStr = pStr + str(p) + ", "
+    PARTICIPANT_LIST = pStr
+    currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
+    fSummary = open(currentSummaryFile, "r")
+    final_summary = fSummary.read()
+    FINAL_SUMMARY = final_summary
+    CONF_ID = currentMeetingInfo['voiceConfID']
+    return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
+
 
 @app.route('/' ,methods=['GET','POST'])
 def index():
@@ -32,7 +36,13 @@ def index():
         #currentSummaryFile = "MeetingSummaryData/" + conf_id + "_summary.txt" # Actual file
         final_summary = "underconstruction"
         FINAL_SUMMARY = final_summary
-    return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
+        return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
+    else:
+        CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation():
+        return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
+
+
+
 
 
 if __name__ == '__main__':
