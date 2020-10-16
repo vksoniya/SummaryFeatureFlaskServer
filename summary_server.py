@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from flask import Flask, render_template, url_for, request, jsonify, make_response
+from flask import Flask, render_template, url_for, request, jsonify, make_response, Response
 import time
 from utils.getMeetingInfo import getcurrentMeetingInfo
 
@@ -43,14 +43,18 @@ def index():
     return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
 
 
+def get_message():
+    time.sleep(1.0)
+    s = time.ctime(time.time())
+    return s
+
 @app.route('/stream')
 def stream():
     def eventStream():
         while True:
             # wait for source data to be available, then push it
-            #sum_text = loadMeetingInformation("2")
-            CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation("2")
-            yield 'data: {}\n\n'.format(FINAL_SUMMARY)
+            sum_text = get_message()
+            yield 'data: {}\n\n'.format(sum_text)
     return Response(eventStream(), mimetype="text/event-stream")
 
 
