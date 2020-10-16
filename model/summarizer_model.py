@@ -36,11 +36,11 @@ def generateSummary(summaryFile, transcriptFile):
     return status
 
 def createSummaryFile(CONF_ID):
-    fName = "~/MeetingSummaryData/" + CONF_ID + "_summary.txt"
+    fName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
     return fName
 
 def getTranscriptFile(CONF_ID):
-    fName = "~/MeetingTranscriptData/" + CONF_ID + "_transcript.txt"
+    fName = os.getcwd() + "/MeetingTranscriptData/" + CONF_ID + "_transcript.txt"
     return fName
 
 if __name__ == '__main__':
