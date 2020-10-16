@@ -114,10 +114,10 @@
             const url = 'https://ltbbb1.informatik.uni-hamburg.de/html5client_soniya/summarize/refresh'
 
             fetch(url)
-            .then((resp) => resp.json())
-            .then(function(data){
-                console.log(data.results)
+            .then(data => {
+                console.log(data)
             })
+            .catch(error => console.error(error))
 
             const file = "eg.txt";
             var fileReader = new FileReader(); 
