@@ -32,6 +32,8 @@ def loadMeetingInformation(location):
         fSummary = open(currentSummaryFile, "r")
         final_summary = fSummary.read()
         FINAL_SUMMARY = final_summary
+        time.sleep(1.0)
+        FINAL_SUMMARY = time.ctime(time.time())
         return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
 
 
@@ -46,8 +48,9 @@ def stream():
     def eventStream():
         while True:
             # wait for source data to be available, then push it
-            sum_text = loadMeetingInformation()
+            #sum_text = loadMeetingInformation("2")
             CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation("2")
+            FINAL_SUMMARY = 
             yield 'data: {}\n\n'.format(FINAL_SUMMARY)
     return Response(eventStream(), mimetype="text/event-stream")
 
