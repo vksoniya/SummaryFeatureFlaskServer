@@ -11,7 +11,7 @@ PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
 
 def loadMeetingInformation(location):
-    if (location == '1')
+    if (location == '1'):
         pStr = ""
         #Step 1: Get the Current Meeting Information
         currentMeetingInfo = getcurrentMeetingInfo()
@@ -27,7 +27,7 @@ def loadMeetingInformation(location):
         FINAL_SUMMARY = final_summary
         #CONF_ID = currentMeetingInfo['voiceConfID']
         return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
-    if (location == '2')
+    if (location == '2'):
         currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
         fSummary = open(currentSummaryFile, "r")
         final_summary = fSummary.read()
