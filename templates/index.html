@@ -137,6 +137,22 @@
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="static/js/materialize.js"></script>
+
+  <script>
+
+    function submit_message() {
+
+        var name = document.getElementById("name");
+        var message = document.getElementById("message");
+
+        var entry = {
+            name: name.value,
+            message: message.value
+        };
+    }
+
+  </script>
+
   <script>
     $(function() {
         $("#btn_refresh").on("click",function(e) {
