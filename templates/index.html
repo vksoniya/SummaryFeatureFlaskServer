@@ -52,6 +52,38 @@
                 </div>
             </div>
         </div>
+
+       
+            <div class="row">
+              <div class="col">
+          
+                <h1>Guestbook</h1>
+                <hr>
+          
+                <div class="mb-3">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your name">
+                  </div>
+          
+                  <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" id="message" cols="30" rows="3" placeholder="Your message"></textarea>
+                  </div>
+          
+                  <button class="btn btn-primary" id="submit" onclick="submit_message();">Submit message</button>
+                </div>
+          
+                <h3>Messages</h3>
+                <hr>
+          
+                <div class="mb-3" id="messages"></div>
+          
+              </div>
+            </div>
+          
+          
+
     </section>
 
     <!-- Summary Section -->
@@ -111,7 +143,10 @@
             e.preventDefault();
             $("#target_div").hide();
 
-            const url = 'https://ltbbb1.informatik.uni-hamburg.de/html5client_soniya/summarize/refresh'
+            let response = fetch('https://ltbbb1.informatik.uni-hamburg.de/html5client_soniya/summarize/refresh')
+            .then(response => console.log(response.text()))
+            .then(data => console.log(data));
+            
 
             fetch(url)
             .then(data => {
@@ -126,7 +161,7 @@
                 ptag.innerHTML = fileReader.result;
             }
             fileReader.readAsText(file);
-            fetch("https://ltbbb1.informatik.uni-hamburg.de/html5client_soniya/summarize/refresh")
+            
             /* 
             fetch
             var ptag = document.getElementById('txt_summary');
