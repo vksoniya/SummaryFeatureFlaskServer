@@ -50,6 +50,8 @@ def index():
 @app.route('/refresh', methods=['GET','POST'])
 def refresh():
     if request.method == 'GET':
+
+        #Step 2: Load <confid>_summary.txt content
         final_summary = "underconstruction"
         FINAL_SUMMARY = final_summary
         return FINAL_SUMMARY

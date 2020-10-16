@@ -111,6 +111,14 @@
             e.preventDefault();
             $("#target_div").hide();
 
+            const url = 'https://ltbbb1.informatik.uni-hamburg.de/html5client_soniya/summarize/refresh'
+
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data){
+                console.log(data.results)
+            })
+
             const file = "eg.txt";
             var fileReader = new FileReader(); 
             fileReader.onload = function (e) { 
@@ -118,9 +126,14 @@
                 ptag.innerHTML = fileReader.result;
             }
             fileReader.readAsText(file);
-
-            /* var ptag = document.getElementById('txt_summary');
-            ptag.innerHTML = 'Observe the Change'; */
+            fetch("https://ltbbb1.informatik.uni-hamburg.de/html5client_soniya/summarize/refresh")
+            /* 
+            fetch
+            var ptag = document.getElementById('txt_summary');
+            ptag.innerHTML = 'Observe the Change'; 
+            https://dev.to/devamaz/using-fetch-api-to-get-and-post--1g7d
+https://developer.mozilla.org/en-US/docs/Web/API/Response
+            */
     });
 });
   </script>
