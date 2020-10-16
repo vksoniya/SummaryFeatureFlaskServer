@@ -75,15 +75,15 @@
             </div>
         <div class="row">
          
-            <div class="col s12 m6 grey darken-3">
+            <!--<div class="col s12 m6 grey darken-3">-->
                 <div class="icon-block">
                     <h2 class="center brown-text"><i class="material-icons">chrome_reader_mode</i></h2>
                     <h5 class="center">Summarized Conversation</h5>
                     <div class="" role="alert"></div>
                     <p id="txt_summary" class="light">{{ final_summary }}</p>
-                    <div id="target_div">Watch this space...</div>
+                    <!--<div id="target_div">Watch this space...</div>-->
                 </div>
-            </div>
+            <!--</div>-->
         </div>
         </div>
     </section>
@@ -105,13 +105,6 @@
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="static/js/materialize.js"></script>
-  <script type="text/javascript">
-    var targetContainer = document.getElementById("target_div");
-    var eventSource = new EventSource("/stream")
-    eventSource.onmessage = function(e) {
-    targetContainer.innerHTML = e.data;
-    };
-  </script>
   
 </body>
 </html>

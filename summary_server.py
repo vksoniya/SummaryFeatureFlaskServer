@@ -11,51 +11,31 @@ PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
 
 def loadMeetingInformation(location):
-    if (location == '1'):
-        pStr = ""
-        #Step 1: Get the Current Meeting Information
-        currentMeetingInfo = getcurrentMeetingInfo()
-        CONF_ID = currentMeetingInfo['voiceConfID']
-        MEETING_START_TIME = currentMeetingInfo['recordTimeStamp']
-        participantList = currentMeetingInfo['userNames']
-        for p in participantList:
-            pStr = pStr + str(p) + ", "
-        PARTICIPANT_LIST = pStr
-        currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
-        fSummary = open(currentSummaryFile, "r")
-        final_summary = fSummary.read()
-        FINAL_SUMMARY = final_summary
-        #CONF_ID = currentMeetingInfo['voiceConfID']
-        return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
-    if (location == '2'):
-        currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
-        fSummary = open(currentSummaryFile, "r")
-        final_summary = fSummary.read()
-        FINAL_SUMMARY = final_summary
-        time.sleep(1.0)
-        FINAL_SUMMARY = time.ctime(time.time())
-        return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
+    pStr = ""
+    #Step 1: Get the Current Meeting Information
+    currentMeetingInfo = getcurrentMeetingInfo()
+
+    CONF_ID = currentMeetingInfo['voiceConfID']
+    MEETING_START_TIME = currentMeetingInfo['recordTimeStamp']
+
+    participantList = currentMeetingInfo['userNames']
+    for p in participantList:
+        pStr = pStr + str(p) + ", "
+    
+    PARTICIPANT_LIST = pStr
+    currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
+    fSummary = open(currentSummaryFile, "r")
+    final_summary = fSummary.read()
+    FINAL_SUMMARY = final_summary
+    #CONF_ID = currentMeetingInfo['voiceConfID']
+    return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
+    
 
 
 @app.route('/', methods=['GET','POST'])
 def index():
     CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation("1")
     return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
-
-
-def get_message():
-    time.sleep(1.0)
-    s = time.ctime(time.time())
-    return s
-
-@app.route('/stream')
-def stream():
-    def eventStream():
-        while True:
-            # wait for source data to be available, then push it
-            sum_text = get_message()
-            yield 'data: {}\n\n'.format(sum_text)
-    return Response(eventStream(), mimetype="text/event-stream")
 
 
 if __name__ == '__main__':
