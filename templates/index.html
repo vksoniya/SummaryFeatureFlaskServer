@@ -105,56 +105,13 @@
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="static/js/materialize.js"></script>
-
-  <script>
-
-    function submit_message() {
-
-        var name = document.getElementById("name");
-        var message = document.getElementById("message");
-
-        var entry = {
-            name: name.value,
-            message: message.value
-        };
-    }
-
+  <script type="text/javascript">
+    var targetContainer = document.getElementById("target_div");
+    var eventSource = new EventSource("/stream")
+    eventSource.onmessage = function(e) {
+    targetContainer.innerHTML = e.data;
+    };
   </script>
-
-  <script>
-    $(function() {
-        $("#btn_refresh").on("click",function(e) {
-            e.preventDefault();
-            $("#target_div").hide();
-
-            let response = fetch('https://ltbbb1.informatik.uni-hamburg.de/html5client_soniya/summarize/refresh')
-            .then(response => console.log(response.text()))
-            .then(data => console.log(data));
-            
-
-            fetch(url)
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => console.error(error))
-
-            const file = "eg.txt";
-            var fileReader = new FileReader(); 
-            fileReader.onload = function (e) { 
-                var ptag = document.getElementById('txt_summary');
-                ptag.innerHTML = fileReader.result;
-            }
-            fileReader.readAsText(file);
-            
-            /* 
-            fetch
-            var ptag = document.getElementById('txt_summary');
-            ptag.innerHTML = 'Observe the Change'; 
-            https://dev.to/devamaz/using-fetch-api-to-get-and-post--1g7d
-https://developer.mozilla.org/en-US/docs/Web/API/Response
-            */
-    });
-});
-  </script>
+  
 </body>
 </html>
