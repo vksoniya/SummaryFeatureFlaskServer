@@ -50,7 +50,6 @@ def stream():
             # wait for source data to be available, then push it
             #sum_text = loadMeetingInformation("2")
             CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation("2")
-            FINAL_SUMMARY = 
             yield 'data: {}\n\n'.format(FINAL_SUMMARY)
     return Response(eventStream(), mimetype="text/event-stream")
 
