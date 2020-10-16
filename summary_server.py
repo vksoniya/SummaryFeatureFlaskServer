@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify, make_response
 import time
 from utils.getMeetingInfo import getcurrentMeetingInfo
 
@@ -37,6 +37,8 @@ def index():
     FINAL_SUMMARY = ""
 
     if request.method == 'POST':
+        req = request.get_json()
+        print(req)
         #Step 2: Load <confid>_summary.txt content
         #currentSummaryFile = "MeetingSummaryData/" + conf_id + "_summary.txt" # Actual file
         final_summary = "underconstruction"
