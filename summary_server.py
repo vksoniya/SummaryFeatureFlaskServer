@@ -26,8 +26,8 @@ def loadMeetingInformation(location):
     PARTICIPANT_LIST = pStr
     summaryFileName = createSummaryFile(CONF_ID)
     transcriptFile = getTranscriptFile(CONF_ID)
-    status = generateSummary(summaryFile, transcriptFile)
-
+    status = generateSummary(summaryFileName, transcriptFile)
+    print(status)
     #currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
     fSummary = open(summaryFileName, "r")
     final_summary = fSummary.read()
