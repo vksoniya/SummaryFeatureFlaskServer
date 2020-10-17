@@ -96,46 +96,23 @@ python3 summary_server.py
 To run this as a standalone component, refer section [Using as Standalone Server](#standalone-server)
 
 ## Integration to BBB
-This feature is implemented an adapted to integrate to the BigBlueButton video conferencing tool. 
-
-1. Make changed in BBB in the following files:
-/etc/bigbluebutton/nginx/bigbluebutton.nginx (check this path again)
-
-```sh
-location /html5client_soniya/summarize/ {
-     proxy_pass http://127.0.0.1:7030/;
-     proxy_http_version 1.1;
-     proxy_set_header Upgrade $http_upgrade;
-     proxy_set_header Connection "Upgrade";
-}
-```
-
-/bigbluebutton-html5/imports/ui/components/audio/audio-controls/component.jsx
-
-Button Component
-```sh
- <div>
-        <button onClick={clickMe}>
-          Summarize
-        </button>
-      </div>
-```
-
-Button Event
-```sh
- function clickMe(){
-      alert('Open Meeting Summary');
-      const url = '<Summarizer Server URL>';
-      window.open(url, "_blank");
-    }
-```
-
+This feature is implemented an adapted to integrate to the BigBlueButton video conferencing tool. Check the config_bbb.txt for further instructions
 
 ## Testing Feature Server
+The following steps require to be followed for testing the feature server
 
+1. Terminal 1: Ensure that summarizer_model.py is running
+2. Terminal 2: Ensure that the flask server summary_server.py is running at 'http://127.0.0.1:7030/' is running
+
+Start a new meeting in BBB. The HTML5 client will be visible as follows (with the Summarize button)
+<image>
+
+While the meeting is going in progress, click the 'Summarize' button to see the following (please give a few seconds as the summarization is online and is configured to have a few seconds delay):
+<image>
 
 
 ## Using as Standalone Server
+Follow the instructions in config_standalone.txt to use this feature as a standalone component
 
 ## License
 

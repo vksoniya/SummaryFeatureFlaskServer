@@ -1,0 +1,32 @@
+Follow the below steps to adapt the BBB HTML5 components to integrate the Summarize feature Server
+
+1. Edit the NGINX config file and add the below location
+```
+location /html5client_soniya/summarize/ {
+     proxy_pass http://127.0.0.1:7030/;
+     proxy_http_version 1.1;
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+}
+```
+
+2. Add Summarize component to HTML5 react component
+/bigbluebutton-html5/imports/ui/components/audio/audio-controls/component.jsx
+
+Button Component
+```
+<div>
+    <button onClick={clickMe}>
+        Summarize
+    </button>
+</div>
+```
+
+Button Event
+```sh
+ function clickMe(){
+      alert('Open Meeting Summary');
+      const url = '<Summarizer Server URL>';
+      window.open(url, "_blank");
+    }
+```
