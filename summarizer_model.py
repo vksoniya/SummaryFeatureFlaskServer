@@ -65,8 +65,10 @@ if __name__ == '__main__':
     #Storage path: "/MeetingSummaryData"
     CONF_ID = extractConfID()
     print("ConfID:" + CONF_ID)
-    #summaryFile = createSummaryFile()
-    #transcriptFile = getTranscriptFile()
+    summaryFile = createSummaryFile()
+    print("Created Summary File:" + summaryFile)
+    transcriptFile = getTranscriptFile()
+    print("Got Transcript File Name:" + transcriptFile)
     #Step2
     #create summary and write to file above
     #status = generateSummary(summaryFile, transcriptFile)
