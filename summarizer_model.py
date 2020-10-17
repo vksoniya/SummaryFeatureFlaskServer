@@ -71,7 +71,7 @@ if __name__ == '__main__':
     print("Got Transcript File Name:" + transcriptFile)
     #Step2
     #create summary and write to file above
-    #status = generateSummary(summaryFile, transcriptFile)
+    status = generateSummary(summaryFile, transcriptFile)
     #print(status)
 
 
