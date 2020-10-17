@@ -3,6 +3,7 @@ import time
 import sys
 
 _cached_stamp = 0
+stamp = 0
 
 def watch_dog(tFile):
     print("inside watch dog")
