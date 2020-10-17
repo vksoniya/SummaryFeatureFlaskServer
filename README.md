@@ -15,9 +15,9 @@ This feature server creates meeting summaries as follows:
 * [Installation](#installation)
   * [Prerequisites](#prerequisites)
   * [Transformer Model](#transformer-model)
-* [Usage: Feature Server](#usage:-feature-server)
-* [Test: Feature Server](#test:-feature-server)
-* [Integration: BBB](#integration:-bbb)
+* [Using Feature Server](#using-feature-server)
+* [Testing Feature Server](#testing-feature-server)
+* [Integration to BBB](#integration-to-bbb)
 * [License](#license)
 
 
@@ -54,10 +54,10 @@ The pretraining task involves randomly shuffling the order of the original sente
 BART is particularly effective when fine tuned for text generation but also works well for comprehension tasks. It matches the performance of RoBERTa with comparable training resources on GLUE and SQuAD, achieves new state-of-the-art results on a range of abstractive dialogue, question answering, and summarization tasks, with gains of up to 6 ROUGE.
 
 
-## Usage: Feature Server
-## Test: Feature Server
+## Using Feature Server
+## Testing Feature Server
 
-## Integration: BBB
+## Integration to BBB
 This feature is implemented an adapted to integrate to the BigBlueButton video conferencing tool 
 
 ## License
