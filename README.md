@@ -1,10 +1,55 @@
-# Summary Feature Server
-A flask server that servers the summarization feature. 
+# Summary Feature Server 
+A server that servers the summarization feature built using python and Flask
+
+## Project
+This server is built under the WILPS project under the Language Technology Group at Universitat Hamburg. The server performs the summarization of meeting conversation, while the meeting is happening. This server can be used as a standalone service, under the WILPS project, this server is integrated to the [BigBlueButton] (https://github.com/vksoniya/bigbluebutton.git) (BBB) project. The BBB application is modified to integrate this feature. 
+
+
+## Table of contents
+
+* [Installation](#installation)
+  * [Prerequisites](#prerequisites)
+  * [Summarizer](#rasa)
+  * [NGINX](#nginx)
+  * [HTTPS certificate](#https-certificate)
+  * [HTTPS certificate](#https-certificate)
+* [How to start the Feature Server](#how-to-start-the-API)
+* [How to train the model](#How-to-train-the-model)
+* [How to test the model](#How-to-test-the-model)
+* [License](#license)
+
+
+## Installation
+This section explaines how this feature server can be installed and also configure all the components necessary for running this server as a web component using Flask. 
+
+
+## Prerequisites
+An Automatic Speech Recognizer (ASR) component is required for this model to create summaries. It could be any open source ASR that creates a transcript of ongoing voice streams. 
+Under the WILPS project, the [Kaldi] () ASR is integrated and publishes the transcripts to the Redis PubSub message broker. 
+
+System Requirements (Recommended):
+The following are the minimum recommendations:
+4 core CPU / 8 GB RAM / 25 GB of SSD storage for the production server 
+Software Requirements
+OS: Ubuntu 18.x
+Python 3.6.9 (check version)
+```sh
+python3 --version
+```
+
+pip3 (check version)
+```sh
+pip3 --version
+```
+
+Sof
 
 ## Summarizer Model
 The model used here is a pretrained BART Model which is a variant of Bidirectional Encoder Representations from Transformers (BERT) 
 
 The Bart model was proposed by Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Ves Stoyanov and Luke Zettlemoyer on 29 Oct, 2019. According to the abstract,
+
+
 
     Bart uses a standard seq2seq/machine translation architecture with a bidirectional encoder (like BERT) and a left-to-right decoder (like GPT).
 
