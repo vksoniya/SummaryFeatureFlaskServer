@@ -95,12 +95,45 @@ python3 summary_server.py
 
 To run this as a standalone component, refer section [Using as Standalone Server](#standalone-server)
 
+## Integration to BBB
+This feature is implemented an adapted to integrate to the BigBlueButton video conferencing tool. 
+
+1. Make changed in BBB in the following files:
+/etc/bigbluebutton/nginx/bigbluebutton.nginx (check this path again)
+
+```sh
+location /html5client_soniya/summarize/ {
+     proxy_pass http://127.0.0.1:7030/;
+     proxy_http_version 1.1;
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+}
+```
+
+/bigbluebutton-html5/imports/ui/components/audio/audio-controls/component.jsx
+
+Button Component
+```sh
+ <div>
+        <button onClick={clickMe}>
+          Summarize
+        </button>
+      </div>
+```
+
+Button Event
+```sh
+ function clickMe(){
+      alert('Open Meeting Summary');
+      const url = '<Summarizer Server URL>';
+      window.open(url, "_blank");
+    }
+```
 
 
 ## Testing Feature Server
 
-## Integration to BBB
-This feature is implemented an adapted to integrate to the BigBlueButton video conferencing tool 
+
 
 ## Using as Standalone Server
 
