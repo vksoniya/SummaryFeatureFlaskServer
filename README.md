@@ -14,10 +14,10 @@ This feature server creates meeting summaries as follows:
 
 * [Installation](#installation)
   * [Prerequisites](#prerequisites)
-  * [Transformer Model](#summarizermodel)
-* [How to start the Feature Server](#how-to-start-the-API)
-* [How to train the model](#How-to-train-the-model)
-* [How to test the model](#How-to-test-the-model)
+  * [Transformer Model](#transformer-model)
+* [Usage: Feature Server](#usage:-feature-server)
+* [Test: Feature Server](#test:-feature-server)
+* [Integration: BBB](#integration:-bbb)
 * [License](#license)
 
 
@@ -27,7 +27,7 @@ This section explaines how this feature server can be installed and also configu
 
 ## Prerequisites
 An Automatic Speech Recognizer (ASR) component is required for this model to create summaries. It could be any open source ASR that creates a transcript of ongoing voice streams. 
-Under the WILPS project, the [Kaldi] () ASR is integrated and publishes the transcripts to the Redis PubSub message broker. 
+Under the WILPS project, the [Kaldi] (https://kaldi-asr.org/) ASR is integrated and publishes the transcripts to the Redis PubSub message broker. 
 
 System Requirements (Recommended):
 The following are the minimum recommendations:
@@ -54,9 +54,13 @@ The pretraining task involves randomly shuffling the order of the original sente
 BART is particularly effective when fine tuned for text generation but also works well for comprehension tasks. It matches the performance of RoBERTa with comparable training resources on GLUE and SQuAD, achieves new state-of-the-art results on a range of abstractive dialogue, question answering, and summarization tasks, with gains of up to 6 ROUGE.
 
 
+## Usage: Feature Server
+## Test: Feature Server
 
-
-
-## Integration to BigBlueButton
+## Integration: BBB
 This feature is implemented an adapted to integrate to the BigBlueButton video conferencing tool 
+
+## License
+
+This project is open source for everyone. 
 
