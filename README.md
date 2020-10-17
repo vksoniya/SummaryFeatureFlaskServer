@@ -2,7 +2,7 @@
 A server that servers the summarization feature built using python and Flask
 
 ## Project
-This server is built under the WILPS project under the Language Technology Group at Universitat Hamburg. The server performs the summarization of meeting conversation, while the meeting is happening. This server can be used as a standalone service, under the WILPS project, this server is integrated to the [BigBlueButton] (https://github.com/vksoniya/bigbluebutton.git) (BBB) project. The BBB application is modified to integrate this feature. 
+This server is built under the WILPS project under the Language Technology Group at Universitat Hamburg. The server performs the summarization of meeting conversation, while the meeting is happening. This server can be used as a standalone service, under the WILPS project, this server is integrated to the [BigBlueButton] (#https://github.com/vksoniya/bigbluebutton.git) (BBB) project. The BBB application is modified to integrate this feature. 
 
 ## Description
 This feature server creates meeting summaries as follows:
@@ -27,7 +27,7 @@ This section explaines how this feature server can be installed and also configu
 
 ## Prerequisites
 An Automatic Speech Recognizer (ASR) component is required for this model to create summaries. It could be any open source ASR that creates a transcript of ongoing voice streams. 
-Under the WILPS project, the [Kaldi] (https://kaldi-asr.org/) ASR is integrated and publishes the transcripts to the Redis PubSub message broker. 
+Under the WILPS project, the [Kaldi] (#https://kaldi-asr.org/) ASR is integrated and publishes the transcripts to the Redis PubSub message broker. 
 
 System Requirements (Recommended):
 The following are the minimum recommendations:
