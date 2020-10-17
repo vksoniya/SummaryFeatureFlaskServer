@@ -1,8 +1,6 @@
 from __future__ import unicode_literals
 from flask import Flask, render_template, url_for, request, jsonify, make_response, Response
-import time
 from utils.getMeetingInfo import getcurrentMeetingInfo
-from model.summarizer_model import *
 
 app = Flask(__name__)
 
