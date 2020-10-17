@@ -24,15 +24,12 @@ def loadMeetingInformation(location):
         pStr = pStr + str(p) + ", "
     
     PARTICIPANT_LIST = pStr
-    summaryFileName = createSummaryFile(CONF_ID)
-    transcriptFile = getTranscriptFile(CONF_ID)
-    status = generateSummary(summaryFileName, transcriptFile)
-    print(status)
-    #currentSummaryFile = "MeetingSummaryData/88503_summary.txt" #This filename will
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
+
+    #Step 2: Get the meeting summary so far
     fSummary = open(summaryFileName, "r")
     final_summary = fSummary.read()
     FINAL_SUMMARY = final_summary
-    #CONF_ID = currentMeetingInfo['voiceConfID']
     return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
     
 
