@@ -104,6 +104,8 @@ The following steps require to be followed for testing the feature server
 1. Terminal 1: Ensure that summarizer_model.py is running
 2. Terminal 2: Ensure that the flask server summary_server.py is running at 'http://127.0.0.1:7030/' is running
 
+Seperate Terminals are recommended so that the respective logs can be viewed.
+
 Start a new meeting in BBB. The HTML5 client will be visible as follows (with the Summarize button)
 <image>
 
