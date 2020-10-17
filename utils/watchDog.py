@@ -23,5 +23,8 @@ def watch_dog(tFile):
         except KeyboardInterrupt:
             print("\nDone")
             break
+        except UnboundLocalError as error:
+        # Output expected UnboundLocalErrors.
+            print(error)
         except: 
             print(f'Unhandled error: {sys.exc_info()[0]}')
