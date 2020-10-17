@@ -2,19 +2,18 @@ import os
 import time
 import sys
 
-_cached_stamp = 0
-stamp = 0
-
 def watch_dog(tFile):
     print("inside watch dog")
 
     while True:
         try:
+            _cached_stamp = 0
+            _stamp = 0
             time.sleep(1)
-            stamp = os.stat(tFile).st_mtime
+            _stamp = os.stat(tFile).st_mtime
             print("inside watch dog:" + str(stamp))
-            if stamp != _cached_stamp:
-                _cached_stamp =  stamp
+            if _stamp != _cached_stamp:
+                _cached_stamp =  _stamp
                 print("file has updated")
                 return True
             else:
