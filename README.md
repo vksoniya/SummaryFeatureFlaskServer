@@ -2,7 +2,7 @@
 A server that servers the summarization feature built using python and Flask
 
 ## Project
-This server is built under the WILPS project under the Language Technology Group at Universitat Hamburg. The server performs the summarization of meeting conversation, while the meeting is happening. This server can be used as a standalone service, under the WILPS project, this server is integrated to the [BigBlueButton] (#https://github.com/vksoniya/bigbluebutton.git) (BBB) project. The BBB application is modified to integrate this feature. 
+This server is built under the WILPS project under the Language Technology Group at Universitat Hamburg. The server performs the summarization of meeting conversation, while the meeting is happening. This server can be used as a standalone service, under the WILPS project, this server is integrated to the [BigBlueButton] (https://github.com/vksoniya/bigbluebutton.git) (BBB) project. The BBB application is modified to integrate this feature. 
 
 ## Description
 This feature server creates meeting summaries as follows:
@@ -52,6 +52,25 @@ The Bart model was proposed by Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazv
 Bart uses a standard seq2seq/machine translation architecture with a bidirectional encoder (like BERT) and a left-to-right decoder (like GPT).
 The pretraining task involves randomly shuffling the order of the original sentences and a novel in-filling scheme, where spans of text are replaced with a single mask token.
 BART is particularly effective when fine tuned for text generation but also works well for comprehension tasks. It matches the performance of RoBERTa with comparable training resources on GLUE and SQuAD, achieves new state-of-the-art results on a range of abstractive dialogue, question answering, and summarization tasks, with gains of up to 6 ROUGE.
+
+###Installation
+In this section, the necessary installations and cloning will be done for running the Summarizer Server
+Important: It is recommended to install and run these components in python environement, to avoid conflict in dependencies and versions of libraries.
+
+1. Create a project folder and create python environment in the project folder
+```sh
+mkdir <your_project_folder>
+cd <your_project_folder>
+python3 -m venv <your_env_name>
+```
+
+2. Activate your environment and install requirements 
+```sh
+source <your_env_name>/bin/activate
+pip install -r requirements.txt
+```
+
+
 
 
 ## Using Feature Server
