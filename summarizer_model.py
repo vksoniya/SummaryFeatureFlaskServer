@@ -33,28 +33,28 @@ def initSummarizer():
 def generateSummary(summaryFile, transcriptFile):
     summarizer = initSummarizer()
    
-    #if watch_dog(transcriptFile):
+    if watch_dog(transcriptFile):
         #Create Summary
-    print("=" * 100)
-    print("2.Summarizing " + str(transcriptFile))
-    print("=" * 100)
-    df = pd.read_csv(transcriptFile, sep='delimiter', header=None, names=["Transcript"])
-        
-    ARTICLE = str(df['Transcript'])
-    sText = summarizer(ARTICLE, max_length=100, min_length=30, do_sample=False)
-    print(sText[0]['summary_text'])
+        print("=" * 100)
+        print("2.Summarizing " + str(transcriptFile))
+        print("=" * 100)
+        df = pd.read_csv(transcriptFile, sep='delimiter', header=None, names=["Transcript"])
+            
+        ARTICLE = str(df['Transcript'])
+        sText = summarizer(ARTICLE, max_length=100, min_length=30, do_sample=False)
+        print(sText[0]['summary_text'])
 
-    tFile = open(summaryFile, "a")
-    m = str(sText[0]['summary_text'])
-    tFile = open(summaryFile, "a")
-    tFile.write(m)
-    tFile.flush()
-    tFile.close()
+        tFile = open(summaryFile, "a")
+        m = str(sText[0]['summary_text'])
+        tFile = open(summaryFile, "a")
+        tFile.write(m)
+        tFile.flush()
+        tFile.close()
 
-    status = "Sucessfully summarized"
+        status = "Sucessfully summarized"
 
-    #else:
-    #    status = "Nothing to summarize"
+    else:
+        status = "Nothing to summarize"
 
     return status
 
