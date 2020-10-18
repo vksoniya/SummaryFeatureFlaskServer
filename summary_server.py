@@ -44,12 +44,12 @@ def index():
     CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation()
     session['SUM_LEN'] = 100
     #Step 2: Get the meeting summary so far
-    #SUM_LEN = 100
+    SUM_LEN = str(session.get('SUM_LEN'))
     return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST, sum_len=SUM_LEN, final_summary=FINAL_SUMMARY)
 
 
-@app.route("/refresh")
-def refresh():
+@app.route("/newroute")
+def newroute():
 
     CONF_ID = str(session.get('CONF_ID'))
     summaryFileName = os.getcwd() + "/MeetingSummaryData/" + str(CONF_ID) + "_summary.txt"
