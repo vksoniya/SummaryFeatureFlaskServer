@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from flask import Flask, render_template, url_for, request, jsonify, make_response, Response, send_file
+from flask import Flask, render_template, url_for, request, jsonify, make_response, Response, send_file, session
 from utils.getMeetingInfo import getcurrentMeetingInfo
 import os
 
@@ -10,6 +10,7 @@ MEETING_START_TIME = ""
 PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
 SUM_LEN = ""
+
 
 def loadMeetingInformation():
     pStr = ""
