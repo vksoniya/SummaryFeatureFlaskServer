@@ -11,7 +11,7 @@ PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
 SUM_LEN = ""
 
-def loadMeetingInformation(location):
+def loadMeetingInformation():
     pStr = ""
     #Step 1: Get the Current Meeting Information
     currentMeetingInfo = getcurrentMeetingInfo()
@@ -36,7 +36,7 @@ def loadMeetingInformation(location):
 
 @app.route('/', methods=['GET','POST'])
 def index():
-    CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation("1")
+    CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation()
     SUM_LEN = 100
     return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST, sum_len=SUM_LEN, final_summary=FINAL_SUMMARY)
 
