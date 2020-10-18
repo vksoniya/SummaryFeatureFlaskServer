@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from flask import Flask, render_template, url_for, request, jsonify, make_response, Response
+from flask import Flask, render_template, url_for, request, jsonify, make_response, Response, send_file
 from utils.getMeetingInfo import getcurrentMeetingInfo
 import os
 
@@ -46,12 +46,15 @@ def index():
 def getPDF():
     # with open("outputs/Adjacency.csv") as fp:
     #     csv = fp.read()
-    csv = '1,2,3\n4,5,6\n'
-    return Response(
-        csv,
-        mimetype="text/csv",
-        headers={"Content-disposition":
-                 "attachment; filename=myplot.csv"})
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF" + CONF_ID + "_summary.pdf"
+    fName = CONF_ID + "_summary.pdf"
+    try:
+        #return send_file('/var/www/PythonProgramming/PythonProgramming/static/ohhey.pdf', attachment_filename='ohhey.pdf')
+        return send_file(summaryFileName, attachment_filename=fName)
+    except Exception as e:
+        return str(e)
+    #csv = '1,2,3\n4,5,6\n'
+    #return Response(csv, mimetype="text/csv", headers={"Content-disposition": "attachment; filename=myplot.csv"})
 
 if __name__ == '__main__':
     app.run(host='localhost', port=7030, debug=True)
