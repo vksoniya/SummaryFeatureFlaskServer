@@ -38,7 +38,8 @@ def loadMeetingInformation():
     
 
 
-@app.route('/', methods=['GET','POST'])
+#@app.route('/', methods=['GET','POST'])
+@app.route('/')
 def index():
     CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation()
     session['SUM_LEN'] = 100
