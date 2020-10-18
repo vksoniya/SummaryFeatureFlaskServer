@@ -46,7 +46,7 @@ def index():
 def getPDF():
     # with open("outputs/Adjacency.csv") as fp:
     #     csv = fp.read()
-    summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF" + CONF_ID + "_summary.pdf"
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF/" + CONF_ID + "_summary.pdf"
     fName = CONF_ID + "_summary.pdf"
     try:
         #return send_file('/var/www/PythonProgramming/PythonProgramming/static/ohhey.pdf', attachment_filename='ohhey.pdf')
