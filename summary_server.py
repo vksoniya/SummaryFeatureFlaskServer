@@ -5,8 +5,6 @@ import os
 
 app = Flask(__name__)
 
-
-session['CONF_ID'] = “foo” 
 CONF_ID = ""
 MEETING_START_TIME = ""
 PARTICIPANT_LIST = ""
