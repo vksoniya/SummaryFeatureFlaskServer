@@ -5,6 +5,8 @@ import os
 
 app = Flask(__name__)
 
+
+session['CONF_ID'] = “foo” 
 CONF_ID = ""
 MEETING_START_TIME = ""
 PARTICIPANT_LIST = ""
@@ -17,6 +19,7 @@ def loadMeetingInformation():
     currentMeetingInfo = getcurrentMeetingInfo()
 
     CONF_ID = currentMeetingInfo['voiceConfID']
+    session['CONF_ID'] = currentMeetingInfo['voiceConfID']
     MEETING_START_TIME = currentMeetingInfo['recordTimeStamp']
 
     participantList = currentMeetingInfo['userNames']
@@ -46,8 +49,9 @@ def index():
 def getPDF():
     # with open("outputs/Adjacency.csv") as fp:
     #     csv = fp.read()
-    summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF/" + CONF_ID + "_summary.pdf"
-    fName = CONF_ID + "_summary.pdf"
+    conf_id = session.get('CONF_ID')
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF/" + conf_id + "_summary.pdf"
+    fName = conf_id + "_summary.pdf"
     try:
         #return send_file('/var/www/PythonProgramming/PythonProgramming/static/ohhey.pdf', attachment_filename='ohhey.pdf')
         return send_file(summaryFileName, attachment_filename=fName)
