@@ -10,7 +10,7 @@ MEETING_START_TIME = ""
 PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
 SUM_LEN = ""
-app.secret_key = 'nevertellthistoanyone’
+app.secret_key = 'nevertellthistoanyone'
 
 
 def loadMeetingInformation():
