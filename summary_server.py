@@ -34,17 +34,17 @@ def loadMeetingInformation():
     fSummary = open(summaryFileName, "r")
     final_summary = fSummary.read()
     FINAL_SUMMARY = final_summary
-    return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY
+
+    session['SUM_LEN'] = 100
+    SUM_LEN = str(session.get('SUM_LEN'))
+
+    return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY, SUM_LEN
     
 
 
-#@app.route('/', methods=['GET','POST'])
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
-    CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation()
-    session['SUM_LEN'] = 100
-    #Step 2: Get the meeting summary so far
-    SUM_LEN = str(session.get('SUM_LEN'))
+    CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY, SUM_LEN = loadMeetingInformation()
     return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST, sum_len=SUM_LEN, final_summary=FINAL_SUMMARY)
 
 
@@ -68,18 +68,13 @@ def newroute():
 
 @app.route("/getPDF")
 def getPDF():
-    # with open("outputs/Adjacency.csv") as fp:
-    #     csv = fp.read()
     conf_id = session.get('CONF_ID')
     summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF/" + str(conf_id) + "_summary.pdf"
     fName = str(conf_id) + "_summary.pdf"
     try:
-        #return send_file('/var/www/PythonProgramming/PythonProgramming/static/ohhey.pdf', attachment_filename='ohhey.pdf')
         return send_file(summaryFileName, attachment_filename=fName)
     except Exception as e:
         return str(e)
-    #csv = '1,2,3\n4,5,6\n'
-    #return Response(csv, mimetype="text/csv", headers={"Content-disposition": "attachment; filename=myplot.csv"})
-
+  
 if __name__ == '__main__':
     app.run(host='localhost', port=7030, debug=True)
