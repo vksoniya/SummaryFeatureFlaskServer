@@ -9,6 +9,7 @@ CONF_ID = ""
 MEETING_START_TIME = ""
 PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
+SUM_LEN = ""
 
 def loadMeetingInformation(location):
     pStr = ""
@@ -36,9 +37,21 @@ def loadMeetingInformation(location):
 @app.route('/', methods=['GET','POST'])
 def index():
     CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation("1")
-    
-    return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST,final_summary=FINAL_SUMMARY)
+    SUM_LEN = 100
+    return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST, sum_len=SUM_LEN, final_summary=FINAL_SUMMARY)
 
+
+
+@app.route("/getPDF")
+def getPDF():
+    # with open("outputs/Adjacency.csv") as fp:
+    #     csv = fp.read()
+    csv = '1,2,3\n4,5,6\n'
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=myplot.csv"})
 
 if __name__ == '__main__':
     app.run(host='localhost', port=7030, debug=True)

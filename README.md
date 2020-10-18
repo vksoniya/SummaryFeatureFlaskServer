@@ -120,3 +120,5 @@ Follow the instructions in config_standalone.txt to use this feature as a standa
 
 This project is open source for everyone. 
 
+#Create a pdf download for the summary post meeting being over <-
+# check for meeting end flag in redis pubsub
