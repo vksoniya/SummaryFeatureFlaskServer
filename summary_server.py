@@ -21,15 +21,16 @@ def loadMeetingInformation():
     CONF_ID = currentMeetingInfo['voiceConfID']
     session['CONF_ID'] = currentMeetingInfo['voiceConfID']
     MEETING_START_TIME = currentMeetingInfo['recordTimeStamp']
+    session['MEETING_START_TIME'] = currentMeetingInfo['recordTimeStamp']
 
     participantList = currentMeetingInfo['userNames']
     for p in participantList:
         pStr = pStr + str(p) + ", "
     
     PARTICIPANT_LIST = pStr
+    session['PARTICIPANT_LIST'] = PARTICIPANT_LIST
     summaryFileName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
 
-    #Step 2: Get the meeting summary so far
     fSummary = open(summaryFileName, "r")
     final_summary = fSummary.read()
     FINAL_SUMMARY = final_summary
@@ -40,9 +41,28 @@ def loadMeetingInformation():
 @app.route('/', methods=['GET','POST'])
 def index():
     CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY = loadMeetingInformation()
-    SUM_LEN = 100
+    session['SUM_LEN'] = 100
+    #Step 2: Get the meeting summary so far
+    #SUM_LEN = 100
     return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST, sum_len=SUM_LEN, final_summary=FINAL_SUMMARY)
 
+
+@app.route("/refresh")
+def refresh():
+
+    CONF_ID = str(session.get('CONF_ID'))
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/" + str(CONF_ID) + "_summary.txt"
+
+    #Step 2: Get the meeting summary so far
+    fSummary = open(summaryFileName, "r")
+    final_summary = fSummary.read()
+    FINAL_SUMMARY = final_summary
+
+    MEETING_START_TIME = str(session.get('MEETING_START_TIME'))
+    PARTICIPANT_LIST = str(session.get('PARTICIPANT_LIST'))
+    SUM_LEN = str(session.get('SUM_LEN'))
+
+    return render_template('index.html',conf_id=CONF_ID,meeting_start_time=MEETING_START_TIME,participant_list=PARTICIPANT_LIST, sum_len=SUM_LEN, final_summary=FINAL_SUMMARY)
 
 
 @app.route("/getPDF")
@@ -50,8 +70,8 @@ def getPDF():
     # with open("outputs/Adjacency.csv") as fp:
     #     csv = fp.read()
     conf_id = session.get('CONF_ID')
-    summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF/" + conf_id + "_summary.pdf"
-    fName = conf_id + "_summary.pdf"
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/PDF/" + str(conf_id) + "_summary.pdf"
+    fName = str(conf_id) + "_summary.pdf"
     try:
         #return send_file('/var/www/PythonProgramming/PythonProgramming/static/ohhey.pdf', attachment_filename='ohhey.pdf')
         return send_file(summaryFileName, attachment_filename=fName)
