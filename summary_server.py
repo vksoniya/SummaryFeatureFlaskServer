@@ -11,6 +11,7 @@ PARTICIPANT_LIST = ""
 FINAL_SUMMARY = ""
 SUM_LEN = ""
 app.secret_key = 'nevertellthistoanyone'
+SUMMARY = "52699_summary.txt"
 
 
 def loadMeetingInformation():
@@ -29,7 +30,8 @@ def loadMeetingInformation():
     
     PARTICIPANT_LIST = pStr
     session['PARTICIPANT_LIST'] = PARTICIPANT_LIST
-    summaryFileName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
+    #summaryFileName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/" + SUMMARY
 
     fSummary = open(summaryFileName, "r")
     final_summary = fSummary.read()
