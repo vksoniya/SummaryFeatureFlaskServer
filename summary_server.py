@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 from flask import Flask, render_template, url_for, request, jsonify, make_response, Response, send_file, session
 from utils.getMeetingInfo import getcurrentMeetingInfo
 import os
+import os.path
+from os import path
 
 app = Flask(__name__)
 
@@ -12,6 +14,7 @@ FINAL_SUMMARY = ""
 SUM_LEN = ""
 app.secret_key = 'nevertellthistoanyone'
 SUMMARY = "52699_summary.txt"
+DEFAULT_MSG = "Meeting yet to be summarized. Click Refresh after few minutes..."
 
 
 def loadMeetingInformation():
@@ -30,16 +33,19 @@ def loadMeetingInformation():
     
     PARTICIPANT_LIST = pStr
     session['PARTICIPANT_LIST'] = PARTICIPANT_LIST
-    #summaryFileName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
-    summaryFileName = os.getcwd() + "/MeetingSummaryData/" + SUMMARY
-
-    fSummary = open(summaryFileName, "r")
-    final_summary = fSummary.read()
-    FINAL_SUMMARY = final_summary
+    summaryFileName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
+    #summaryFileName = os.getcwd() + "/MeetingSummaryData/" + SUMMARY
+    
+    if(path.exists(summaryFileName)):
+        fSummary = open(summaryFileName, "r")
+        final_summary = fSummary.read()
+        FINAL_SUMMARY = final_summary
+    else:
+        FINAL_SUMMARY = DEFAULT_MSG
 
     session['SUM_LEN'] = 100
     SUM_LEN = str(session.get('SUM_LEN'))
-
+    
     return CONF_ID, MEETING_START_TIME, PARTICIPANT_LIST, FINAL_SUMMARY, SUM_LEN
     
 
