@@ -4,6 +4,7 @@ from transformers import pipeline
 import textwrap
 from utils.getMeetingInfo import getcurrentMeetingInfo
 from utils.watchDog import watch_dog
+from utils.asr import convertAudiotoText
 
 #This server will create summary and write a summary file
 # <confid>_summary.txt to the /MeetingSummaryData location
@@ -12,10 +13,12 @@ from utils.watchDog import watch_dog
 #summaryFile = "29499_summary1.txt"
 CONF_ID = ""
 
-def extractConfID():
+def extractConfInfo():
     currentMeetingInfo = getcurrentMeetingInfo()
     CONF_ID = currentMeetingInfo['voiceConfID']
-    return CONF_ID
+    RECORD_PATH = currentMeetingInfo['RecordPath']
+    return CONF_ID, RECORD_PATH
+
 
 def createSummaryFile():
     fName = os.getcwd() + "/MeetingSummaryData/" + CONF_ID + "_summary.txt"
@@ -63,8 +66,9 @@ if __name__ == '__main__':
     #Step 1:
     #Create summary file <confid>_summary.txt
     #Storage path: "/MeetingSummaryData"
-    CONF_ID = extractConfID()
+    CONF_ID, RECORD_PATH = extractConfInfo()
     print("ConfID:" + CONF_ID)
+    print("Record Path:" + RECORD_PATH)
     summaryFile = createSummaryFile()
     print("Created Summary File:" + summaryFile)
     transcriptFile = getTranscriptFile()
