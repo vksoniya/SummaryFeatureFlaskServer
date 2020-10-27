@@ -4,7 +4,6 @@ from transformers import pipeline
 import textwrap
 from utils.getMeetingInfo import getcurrentMeetingInfo
 from utils.watchDog import watch_dog
-from utils.asr import convertAudiotoText
 
 #This server will create summary and write a summary file
 # <confid>_summary.txt to the /MeetingSummaryData location
