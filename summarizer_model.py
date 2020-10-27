@@ -44,13 +44,15 @@ def generateSummary(summaryFile, transcriptFile):
             
         ARTICLE = str(df['Transcript'])
         sText = summarizer(ARTICLE, max_length=100, min_length=30, do_sample=False)
+        t = sText[0]['summary_text']
         #print(sText[0]['summary_text'])
-        print(sText)
+        temp = t[38:]
+        print(t[38:]) #quick hack to fix text details
 
         tFile = open(summaryFile, "a")
-        m = str(sText[0]['summary_text'])
+        m = str(sText[0]['summary_text']) #to be corrected later
         tFile = open(summaryFile, "a")
-        tFile.write(m)
+        tFile.write(temp)
         tFile.flush()
         tFile.close()
 
