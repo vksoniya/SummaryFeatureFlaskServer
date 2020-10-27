@@ -44,7 +44,8 @@ def generateSummary(summaryFile, transcriptFile):
             
         ARTICLE = str(df['Transcript'])
         sText = summarizer(ARTICLE, max_length=100, min_length=30, do_sample=False)
-        print(sText[0]['summary_text'])
+        #print(sText[0]['summary_text'])
+        print(sText)
 
         tFile = open(summaryFile, "a")
         m = str(sText[0]['summary_text'])
