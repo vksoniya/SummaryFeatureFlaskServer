@@ -3,23 +3,31 @@
 
 import os
 import subprocess
-from utils.convertToWav import convertToWavFile
 
 # Only for test
 # opusFile = "data/cde145e5c20766d33c81bb492a157a94feb3a0f1-1603617884026-15243890485.opus"
 
-def chuckAudio(opusFile):
-    wavFilePath, wavFileName = convertToWavFile(opusFile)
-    print(wavFilePath)
-    print(wavFileName)
+def createConfTemp(CONF_ID):
+    path = os.path.join(os.getcwd(), "audio/tmp", str(CONF_ID))
+    isdir = os.path.isdir(path)
+    if not isdir:
+        os.mkdir(path)
+        status = "Path: " + path + " created successfully!"
+    else:
+        status = "Path: " + path + " already exists!"
+    return status, path
 
-    #wavFileName = "bb492a157a94feb3a0f1-1603617884026-15243890485.wav"
+def chuckAudio(wavFilePath, CONF_ID):
 
-    query = "ffmpeg -i " + wavFileName +  " -f segment -segment_time 50 -c copy tmp/output%09d.wav"
+    #create tmp folder for conf ID
+    status, path = createConfTemp(CONF_ID)
+    print(status)
+
+    query = "ffmpeg -i " + wavFilePath +  " -f segment -segment_time 59 -c copy " + path + "/output%09d.wav"
     response = subprocess.Popen(query, shell=True, stdout=subprocess.PIPE).stdout.read()
     s = str(response).encode('utf-8')
     print("Sub audios created successfully" + str(s))
 
-    return wavFilePath
+    return path
 
 

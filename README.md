@@ -59,6 +59,8 @@ BART is particularly effective when fine tuned for text generation but also work
 In this section, the necessary installations and cloning will be done for running the Summarizer Server
 Important: It is recommended to install and run these components in python environement, to avoid conflict in dependencies and versions of libraries.
 
+IMPORTANT: Please maintain the folder structure when using the server components 
+
 1. Create a project folder and create python environment in the project folder
 ```sh
 mkdir <your_project_folder>
