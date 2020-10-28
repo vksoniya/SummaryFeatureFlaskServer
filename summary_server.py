@@ -1,3 +1,9 @@
+""" Purpose: A Flask server that serves the Summarizer service, integrated to the BigBlueButton client
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
+
 from __future__ import unicode_literals
 from flask import Flask, render_template, url_for, request, jsonify, make_response, Response, send_file, session
 from utils.getMeetingInfo import getcurrentMeetingInfo

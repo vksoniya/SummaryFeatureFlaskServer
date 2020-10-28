@@ -1,3 +1,9 @@
+""" Purpose: Automatic Speech Recognition module using Google's speech recognition
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
+
 from utils.getMeetingInfo import getcurrentMeetingInfo
 from utils.chunkAudio import chuckAudio
 from utils.convertToWav import convertToWavFile

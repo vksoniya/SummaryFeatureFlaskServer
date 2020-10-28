@@ -1,3 +1,9 @@
+""" Purpose: Transformer BART model that summarizes input meeting transcripts
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
+
 import pandas as pd
 import os
 from transformers import pipeline
