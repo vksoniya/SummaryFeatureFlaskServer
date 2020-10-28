@@ -126,8 +126,7 @@ Follow the instructions in config_standalone.txt to use this feature as a standa
 
 ## Demo
 
-A demo video of this feature server is available in the link below:
-![Demo](#https://youtu.be/pxG3St7pvCo)
+A demo video of this feature server is available in the ![link](#https://youtu.be/pxG3St7pvCo)
 
 ## License
 
