@@ -106,7 +106,7 @@ The integrated architecture of the BigBlueButton and Summarizer Server is as fol
 The following steps require to be followed for testing the feature server
 
 1. Terminal 1: Ensure that summarizer_model.py is running
-2. Terminal 2: Ensure that the flask server summary_server.py is running at 'http://127.0.0.1:7030/' is running
+2. Terminal 2: Ensure that the flask server summary_server.py is running at 'http://127.0.0.1:7030/' 
 
 Seperate Terminals are recommended so that the respective logs can be viewed.
 
@@ -125,5 +125,3 @@ Follow the instructions in config_standalone.txt to use this feature as a standa
 
 This project is open source for everyone. 
 
-#Create a pdf download for the summary post meeting being over <-
-# check for meeting end flag in redis pubsub

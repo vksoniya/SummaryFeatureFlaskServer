@@ -1,3 +1,9 @@
+""" Purpose: A Utility script to listen to the redis pubsub channel 'from-voice-conf-redis-channel' of BigBlueButton
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
+
 import redis
 import json
 

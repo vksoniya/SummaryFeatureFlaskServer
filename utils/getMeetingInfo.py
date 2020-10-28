@@ -1,3 +1,10 @@
+""" Purpose: A Utility script that gets the respective conference details from the redis pubsub message broker of BigBlueButton
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
+
+
 from utils.redisChannelAccess import subscribeToRedisChannel
 import json
 

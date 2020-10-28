@@ -1,3 +1,9 @@
+""" Purpose: A Utility script that converts opus audio file to wav audio format
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
+
 import os
 import subprocess
 

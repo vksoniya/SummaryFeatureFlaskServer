@@ -1,3 +1,9 @@
+""" Purpose: A Utility script to check if the transcript file is changed in periodic intervals
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
+
 import os
 import time
 import sys

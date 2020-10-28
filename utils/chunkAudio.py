@@ -1,5 +1,8 @@
-#Convert Opus to Wav
-#Split them to less than a minute and store it in /tmp
+""" Purpose: A Utility script chucks the audio files into smaller sub audios of length of 59 secs each
+Source Code Creator: Soniya Vijayakumar
+Project: WILPS Hamburg University 
+Term: Summer 2021
+M.Sc. Intelligent Adaptive Systems  """
 
 import os
 import subprocess
