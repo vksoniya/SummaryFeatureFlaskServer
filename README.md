@@ -6,9 +6,9 @@ This server is built under the WILPS project under the Language Technology Group
 
 ## Description
 This feature server creates meeting summaries as follows:
-    Extracts the transcripts from the ASR in a per-set time interval
-    Summarizes the extracted meeting conversation
-    The Summary is available for the meeting user to view while the conference is on-going
+* Extracts the transcripts from the ASR in a per-set time interval
+* Summarizes the extracted meeting conversation
+* The Summary is available for the meeting user to view while the conference is on-going
 
 ## Table of contents
 
