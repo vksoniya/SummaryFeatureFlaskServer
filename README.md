@@ -6,9 +6,10 @@ This server is built under the WILPS project under the Language Technology Group
 
 ## Description
 This feature server creates meeting summaries as follows:
-* Extracts the transcripts from the ASR in a per-set time interval
-* Summarizes the extracted meeting conversation
-* The Summary is available for the meeting user to view while the conference is on-going
+* Extracts the transcripts from the ASR in a per-set time interval.
+* Summarizes the extracted meeting conversation.
+* The Summary is available for the meeting user to view while the conference is on-going.
+* PDF of the summrary created so far available for download during and post meeting end.
 
 ## Table of contents
 
@@ -30,18 +31,18 @@ This section explaines how this feature server can be installed and also configu
 An Automatic Speech Recognizer (ASR) component is required for this model to create summaries. It could be any open source ASR that creates a transcript of ongoing voice streams. 
 Under the WILPS project, the [Kaldi](https://kaldi-asr.org/) ASR is integrated and publishes the transcripts to the Redis PubSub message broker. 
 
-System Requirements (Recommended):
+### System Requirements (Recommended):
 The following are the minimum recommendations:
-4 core CPU / 8 GB RAM / 25 GB of SSD storage for the production server 
-Software Requirements
-OS: Ubuntu 18.x
-Free ports: 4047 (Bigbluebutton HTML5 client) & 7030 (Flask Server)
-Python 3.6.9 (check version)
+* 4 core CPU / 8 GB RAM / 25 GB of SSD storage for the production server 
+### Software Requirements
+* OS: Ubuntu 18.x
+* Free ports: 4047 (Bigbluebutton HTML5 client) & 7030 (Flask Server)
+* Python 3.6.9 (check version)
 ```sh
 python3 --version
 ```
 
-pip3 (check version)
+* pip3 (check version)
 ```sh
 pip3 --version
 ```
