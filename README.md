@@ -99,6 +99,8 @@ To run this as a standalone component, refer section [Using as Standalone Server
 
 ## Integration to BBB
 This feature is implemented an adapted to integrate to the BigBlueButton video conferencing tool. Check the config_bbb.txt for further instructions
+The integrated architecture of the BigBlueButton and Summarizer Server is as follows:
+![Architecture](images/Architecture.png)
 
 ## Testing Feature Server
 The following steps require to be followed for testing the feature server
@@ -109,10 +111,11 @@ The following steps require to be followed for testing the feature server
 Seperate Terminals are recommended so that the respective logs can be viewed.
 
 Start a new meeting in BBB. The HTML5 client will be visible as follows (with the Summarize button)
-<image>
+![BigBlueButtonClient](images/BigBlueButtonClient.png)
+
 
 While the meeting is going in progress, click the 'Summarize' button to see the following (please give a few seconds as the summarization is online and is configured to have a few seconds delay):
-<image>
+![SummarizerClient](images/SummarizerClient.png)
 
 
 ## Using as Standalone Server

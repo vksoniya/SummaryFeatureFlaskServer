@@ -1,1 +1,13 @@
 Follow the instructions below to run this feature as a standalone summarizer feature:
+
+Installation:
+Step 1: Install the dependencies from requirements.txt
+Step 2: Make the following changes in the summary_server.py
+
+Function loadMeetingInformation is the function that interfaces with the system to which this module should be integrated. 
+Edit the function loadMeetingInformation() to get the required information as per your need
+
+FINAL_SUMMARY holds the summarized information that is to be rendered in the HTML client. 
+
+Step 3: summarizer_model.py instantiates the transformer model
+Make the required changes to the edit the path for the transcriptFile variable, so that the appropriate tracscript file is loaded as input to the function generateSummary()
